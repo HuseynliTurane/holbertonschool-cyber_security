@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script stops the 4-to_infinity_and_beyond process without using kill or killall
+
+for pid in /proc/[0-9]*; do
+    if [ -r "$pid/comm" ]; then
+        if [ "$(cat "$pid/comm")" = "4-to_infinity_and_beyond" ]; then
+            echo -n "SIGTERM" > /proc/"${pid##*/}"/status 2>/dev/null
+        fi
+    fi
+done
