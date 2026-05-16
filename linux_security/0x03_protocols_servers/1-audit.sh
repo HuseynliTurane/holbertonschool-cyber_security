@@ -1,3 +1,3 @@
 #!/bin/bash
-grep -vE '^#|^$' /etc/ssh/sshd_config # $1
+grep -vE '^#|^$' /etc/ssh/sshd_config | grep -v "$1"
 
