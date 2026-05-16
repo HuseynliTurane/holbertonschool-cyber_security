@@ -1,2 +1,3 @@
 #!/bin/bash
-sudo sshd -T # $1
+grep -vE '^#|^$' /etc/ssh/sshd_config # $1
+
