@@ -1,2 +1,2 @@
 #!/bin/bash
-subfinder -d $1 -silent | tee /dev/stderr | xargs -I {} sh -c 'echo -n "{},"; dig +short {} | tail -n1' > $1.txt
+subfinder -d $1 -silent -o $1.txt -oI -oJ -cs 2>/dev/null | awk -F, '{print $1}'
